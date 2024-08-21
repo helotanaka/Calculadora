@@ -1,11 +1,13 @@
-// Heloísa Tanaka Fernandes - htf - 21/08/2024 16:02 - 18:14
-//Primeira questão e base na main
+// Heloísa Tanaka Fernandes - htf - 21/08/2024 18:20 - 19:00
+// Opção 2 do complemento a 2
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 void primeiro(int numero);
+
+void segundo(int numero);
 
 int main(void) {
   int escolha;
@@ -18,6 +20,8 @@ int main(void) {
   
   if(escolha == 1){
     primeiro(numero);
+  }else if (escolha == 2){
+    segundo(numero);
   }
 }
 
@@ -300,4 +304,73 @@ void primeiro(int numero){
   printf("%s\n\n", str4);
 
   printf("BCD: %s\n\n", str1);
+}
+
+void segundo(int numero){
+
+  printf("\n2 OPÇÃO-----------\n\n");
+  
+  double resultado;
+  int resto,  num = numero;
+  char str1[30] = "", str2[30] = "";
+
+  printf("\nBase 2: \n\n");
+  for (int i = 1; i <= 16; i++){
+    
+    if (num <= 1) {
+      sprintf(str2, "%d", num);
+      strcat(str2, str1);
+      strcpy(str1, str2);
+      num = 0;
+    } else {
+      resultado = num/2;
+      resto = num%2;
+      printf("%d / 2 = %.0f, resto = %d\n", num, resultado, resto);
+      num = resultado;
+  
+      sprintf(str2, "%d", resto);
+      strcat(str2, str1);
+      strcpy(str1, str2);
+      strcpy(str2, "");
+    }
+  }
+  printf("\nBinário: %s\n", str1);
+
+  num = atoi(str1);
+  strcpy(str1, "");
+  for (int i = 1; i <= 16; i++){
+    resto = num%10;
+    switch (resto){
+      case 0:
+        strcpy(str2, "1");
+        strcat(str2, str1);
+        strcpy(str1, str2);
+        strcpy(str2, "");
+        break;
+      case 1:
+        strcpy(str2, "0");
+        strcat(str2, str1);
+        strcpy(str1, str2);
+        strcpy(str2, "");
+        break;
+    }
+    num = num/10;
+  }
+
+  printf("\nComplemento a 1: %s\n", str1);
+  printf("                 +              1");
+
+  int flag = 1;
+  for (int i = 15; i >= 0; i--){
+    if (flag == 1) {
+      if (str1[i] == '0') {
+        str1[i] = '1';
+        flag = 0;
+      } else {
+        str1[i] = '0';
+      }
+    }
+  }
+
+  printf("\nComplemento a 2: %s\n\n", str1);
 }
