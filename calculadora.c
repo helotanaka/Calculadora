@@ -1,5 +1,5 @@
-// Heloísa Tanaka Fernandes - htf - 25/08/2024 14:42 - 17:36 
-// Opção 3 da tranformação de double e float
+// Heloísa Tanaka Fernandes - htf - 25/08/2024 16:42 
+// Correção 3 da tranformação de double e float
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -400,7 +400,7 @@ void terceiro(double numero) {
     num = (int) parte_inteira;
 
   printf("Parte inteira: %d\n", num);
-  printf("Parte fracionária: %.3f\n\n", parte_fracionaria);
+  printf("Parte fracionária: %f\n\n", parte_fracionaria);
 
   while(1){
 
@@ -422,14 +422,14 @@ void terceiro(double numero) {
       break;
     }
   }
-  
+
   printf("\n");
   sprintf(str2, ".");
   strcat(str1, str2);
   strcpy(str2, "");
 
   char numero_flutuante[64];
-  
+
   while(1){
 
     resultado = parte_fracionaria*2;
@@ -485,13 +485,15 @@ void terceiro(double numero) {
         flag = 0;
       }
     }
+    double temp = atof(str1);
+    sprintf(str1, "%f", temp);
     printf("\nPonto Flutuante: %s\n", str1);
     strcpy(numero_flutuante, str1);
     printf("Expoente: 2^%d\n\n", cont);
   }
 
 // PARTE DE FLOAT
-  
+
   printf("FLOAT: \n");
   int expo = 0;
   expo = 127 + cont;
@@ -518,7 +520,7 @@ void terceiro(double numero) {
         strcpy(str2, "");
         break;
       }
-    
+
   }
 
   printf("\nBinário do expoente: %s\n", str1);
@@ -528,7 +530,7 @@ void terceiro(double numero) {
   for (int i = 2; i < strlen(numero_flutuante); i++){
      vintetresbits[i-2] = numero_flutuante[i];
    }
-  
+
   printf("\n%d %s %s\n", negativo, str1, vintetresbits);
 
   // PARTE DE DOUBLE
