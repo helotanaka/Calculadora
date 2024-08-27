@@ -1,5 +1,5 @@
-// Heloísa Tanaka Fernandes - htf - 25/08/2024 16:42 
-// Correção 3 da tranformação de double e float
+// Heloísa Tanaka Fernandes - htf - 27/08/2024 16:413
+// Ultimas correções e aprimoramentos
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -527,11 +527,8 @@ void terceiro(double numero) {
 
   char vintetresbits[23] = "00000000000000000000000";
 
-  for (int i = 2; i < strlen(numero_flutuante); i++){
-     vintetresbits[i-2] = numero_flutuante[i];
-   }
-
-  printf("\n%d %s %s\n", negativo, str1, vintetresbits);
+  printf("\n[%d] [%s] [%s]\n", negativo, str1, vintetresbits);
+  printf("\n[sinal] [expoente com viés] [fração]");
 
   // PARTE DE DOUBLE
 
@@ -572,5 +569,6 @@ void terceiro(double numero) {
      sessentaequatrobits[i-2] = numero_flutuante[i];
    }
 
-  printf("\n%d %s %s", negativo, str1, sessentaequatrobits);
+  printf("\n[%d] [%s] [%s]", negativo, str1, sessentaequatrobits);
+  printf("\n[sinal] [expoente com viés] [fração]");
 }
